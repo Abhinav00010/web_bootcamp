@@ -47,3 +47,25 @@ function randomUser() {
       console.log("Error fetching random user:" + error);
     });
 }
+
+function myrandomUser() {
+  fetch("/api/random-user")
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (data) {
+      var userName = document.getElementById("user-name");
+      var userImage = document.getElementById("user-image");
+      var userGender = document.getElementById("user-gender");
+
+      var newUserName = data.name;
+      var newUserGender = data.gender;
+      var newUserImage = data.image;
+      userName.innerHTML = newUserName;
+      userImage.src = newUserImage;
+      userGender.innerHTML = newUserGender;
+    })
+    .catch(function (error) {
+      console.log("Error fetching random user:" + error);
+    });
+}
